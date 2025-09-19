@@ -25,7 +25,7 @@ app.use(express.json());
 
 const allowedOrigins = [
   "http://localhost:5173",          // Vite dev frontend
-//   "https://your-frontend-domain.com" // deployed frontend
+  "https://edventurapp.vercel.app" // deployed frontend
 ];
 
 app.use(cors(
