@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import ParticleBackground from "../components/ParticleBackground"
 import axios from 'axios'
+import api from '../api/axios'
 import { toast } from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { useEffect } from "react"
@@ -12,7 +13,7 @@ export default function EdventurForm() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get('/api/user')
+    api.get('/api/user')
       .then((res) => {
         if (res.data.user.role != 'Teacher') {
           toast.error('You are unauthorized');
@@ -30,7 +31,7 @@ export default function EdventurForm() {
   } = useForm()
 
   const onSubmit = (data) => {
-    axios.post('/api/questions', data)
+    api.post('/api/questions', data)
       .then((res) => {
         if (res.data.message) {
           toast.success(res.data.message);

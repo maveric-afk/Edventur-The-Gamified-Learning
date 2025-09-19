@@ -5,8 +5,11 @@ const questionRouter=require('./Routes/questions')
 const cors=require('cors')
 const cookieParser=require('cookie-parser')
 const {loggedInOnly}=require('./middlewares/user')
+const dotenv=require('dotenv')
 
-connectMongoDB('mongodb://127.0.0.1:27017/LearningApp')
+dotenv.config()
+
+connectMongoDB(process.env.MONGO_URI)
 .then(()=>{
     console.log('MongoDB connected');
 })
@@ -15,12 +18,22 @@ connectMongoDB('mongodb://127.0.0.1:27017/LearningApp')
 })
 
 const app=express();
-const PORT=8000;
+const PORT=process.env.PORT || 8000;
 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173",          // Vite dev frontend
+//   "https://your-frontend-domain.com" // deployed frontend
+];
+
+app.use(cors(
+    {
+    origin: allowedOrigins,
+    credentials: true, // if using cookies/auth
+  }
+));
 app.use(cookieParser());
 
 app.use('/api',staticRouter);

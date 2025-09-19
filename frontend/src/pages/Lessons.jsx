@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import ParticleBackground from "../components/ParticleBackground"
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
+import api from '../api/axios'
 import BadgeUnlock from "../components/BadgeUnlock"
 
 export default function LessonsPage() {
@@ -40,7 +41,7 @@ export default function LessonsPage() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get('/api/user')
+    api.get('/api/user')
       .then((res) => {
         if (res.data.error) {
           toast.error(res.data.error);
@@ -55,7 +56,7 @@ export default function LessonsPage() {
 
 
   useEffect(()=>{
-    axios.post('/api/badges')
+    api.post('/api/badges')
     .then((res)=>{
       if(res.data.badge){
         setBadge(res.data.badge);

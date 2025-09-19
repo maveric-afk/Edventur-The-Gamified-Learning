@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion'
 import {toast} from 'react-hot-toast'
 import axios from 'axios'
+import api from '../api/axios'
 
 const Signup = () => {
     const {
@@ -19,7 +20,7 @@ const Signup = () => {
         if(data.password!=data.confirmpassword){
             return toast.error('Password does not match');
         }
-    axios.post('/api/signup',data)
+    api.post('/api/signup',data)
     .then((res)=>{
         toast.success('Succesfully signed up');
         navigate('/login')

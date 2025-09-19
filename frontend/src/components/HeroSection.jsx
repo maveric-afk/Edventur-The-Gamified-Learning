@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import LoadingScreen from './LoadingScreen';
 import {NavLink} from 'react-router-dom'
 import axios from 'axios'
+import api from '../api/axios'
 
 const HeroSection = () => {
   const [loading, setLoading] = useState(true);
@@ -55,7 +56,7 @@ const HeroSection = () => {
   };
 
   useEffect(()=>{
-      axios.post('/api/badges')
+      api.post('/api/badges')
       .then((res)=>{
         if(res.data.badge){
           setBadge(res.data.badge);

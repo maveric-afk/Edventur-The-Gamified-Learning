@@ -4,6 +4,7 @@ import LoadingScreen from "../components/LoadingScreen"
 import {toast} from 'react-hot-toast'
 import {NavLink} from 'react-router-dom'
 import axios from 'axios'
+import api from '../api/axios'
 
 
 const styles = `
@@ -301,7 +302,7 @@ export default function EnglishPage() {
   const questions=useRef([]);
   const DataQuestions=useRef([]);
   useEffect(()=>{
-    axios.get('/api/questions/learningquestions/english')
+    api.get('/api/questions/learningquestions/english')
     .then((res)=>{
       if(res.data.error){
         toast.error(res.data.error);
@@ -357,7 +358,7 @@ export default function EnglishPage() {
       const Score={
         score:score/5
       }
-      axios.patch('/api/user/learningscore',Score)
+      api.patch('/api/user/learningscore',Score)
       .then((res)=>{
         console.log(res.data.success);
       })

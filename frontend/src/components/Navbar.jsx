@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
+import api from '../api/axios'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ const Navbar = () => {
   ];
 
   const handleLogout = () => {
-    axios.get('/api/logout')
+    api.get('/api/logout')
     .then((res)=>{
       toast.success(res.data.message);
     })

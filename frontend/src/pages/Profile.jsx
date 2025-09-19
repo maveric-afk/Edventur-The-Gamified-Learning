@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import ParticleBackground from '../components/ParticleBackground';
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import api from '../api/axios'
 import {toast} from 'react-hot-toast';
 
 
@@ -10,7 +11,7 @@ const Profile = () => {
   const [user, setUser] = useState({});
 
    useEffect(()=>{
-    axios.post('/api/badges')
+    api.post('/api/badges')
     .then((res)=>{
     })
     .catch((err)=>{
@@ -19,7 +20,7 @@ const Profile = () => {
   },[])
 
   useEffect(() => {
-    axios.get('/api/user')
+    api.get('/api/user')
     .then((res)=>{
       if(res.data.error){
         toast.error(res.data.error);

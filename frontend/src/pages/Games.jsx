@@ -7,6 +7,7 @@ import RacingGame from '/public/RacingGame.jpeg'
 import {NavLink,useNavigate} from 'react-router-dom'
 import {toast} from 'react-hot-toast'
 import axios from 'axios'
+import api from '../api/axios'
 import BadgeUnlock from "../components/BadgeUnlock";
 
 
@@ -33,7 +34,7 @@ const Games = () => {
   const [displayed,setDisplayed]=useState(false);
 
   useEffect(()=>{
-    axios.get('/api/user')
+    api.get('/api/user')
     .then((res)=>{
       if(res.data.error){
         toast.error(res.data.error);
@@ -47,7 +48,7 @@ const Games = () => {
   },[])
 
   useEffect(()=>{
-    axios.post('/api/badges')
+    api.post('/api/badges')
     .then((res)=>{
       if(res.data.badge){
         setBadge(res.data.badge);

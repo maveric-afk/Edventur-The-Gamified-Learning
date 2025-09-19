@@ -4,6 +4,7 @@ import LoadingScreen from "../components/LoadingScreen"
 import {NavLink} from 'react-router-dom'
 import {toast} from 'react-hot-toast'
 import axios from 'axios'
+import api from '../api/axios'
 
 
 const styles = `
@@ -300,7 +301,7 @@ export default function MathsPage() {
  const questions=useRef([]);
   const DataQuestions=useRef([]);
   useEffect(()=>{
-    axios.get('/api/questions/learningquestions/math')
+    api.get('/api/questions/learningquestions/math')
     .then((res)=>{
       if(res.data.error){
         toast.error(res.data.error);
@@ -364,7 +365,7 @@ export default function MathsPage() {
       const Score={
         score:score/5
       }
-      axios.patch('/api/user/learningscore',Score)
+      api.patch('/api/user/learningscore',Score)
       .then((res)=>{
         console.log(res.data.success);
       })

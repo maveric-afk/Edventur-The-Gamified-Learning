@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, use } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import LoadingScreen from "../components/LoadingScreen"
 import axios from 'axios'
+import api from '../api/axios'
 import {useNavigate,NavLink} from 'react-router-dom'
 import {toast} from 'react-hot-toast'
 
@@ -16,7 +17,7 @@ const questions=useRef([]);
 
   const navigate=useNavigate();
   useEffect(()=>{
-    axios.get('/api/questions/gamequestions')
+    api.get('/api/questions/gamequestions')
   .then((res)=>{
     if(res.data.error){
       toast.error(res.data.error);
@@ -56,7 +57,7 @@ const questions=useRef([]);
     if(gameState.gameOver){
       const Score=
       {score:gameState.score/5};
-      axios.patch('/api/user/gamescore',Score)
+      api.patch('/api/user/gamescore',Score)
       .then((res)=>{
         console.log(res.data.success)
       })

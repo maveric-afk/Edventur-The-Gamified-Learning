@@ -9,7 +9,7 @@ const setUser=(user)=>{
         learningScore:user.learningScore,
         standard:user.standard,
         badges:user.badges
-    },process.env.JWT_Secret)
+    },process.env.JWT_SECRET)
     return token;
 }
 
@@ -18,7 +18,7 @@ const getUser=(token)=>{
         return null;
     }
     else{
-        return jwt.verify(token,process.env.JWT_Secret);
+        return jwt.verify(token,process.env.JWT_SECRET);
     }
 }
 

@@ -2,13 +2,14 @@ import {useState,useEffect} from 'react'
 import ParticleBackground from '../components/ParticleBackground';
 import {NavLink} from 'react-router-dom'
 import axios from 'axios'
+import api from '../api/axios'
 
 
 export default function LeaderBoard() {
     const [students,setStudents]=useState([]);
     
     useEffect(()=>{
-        axios.get('/api/students')
+        api.get('/api/students')
         .then((res)=>{
             if(res.data.students){
                 setStudents(res.data.students);
