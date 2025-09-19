@@ -22,7 +22,12 @@ async function handleUserSignin(req,res) {
     }
     
     const token=setUser(user[0]);
-    res.cookie('token',token);
+    res.cookie('token',token, {
+  httpOnly: true,      // cookie not accessible via JS (good)
+  secure: true,        // must be true for HTTPS
+  sameSite: "none",    // allows cross-site cookies
+  maxAge: 1000 * 60 * 60 * 24, // 1 day, optional
+});
     console.log(token);
     return res.json({message:'Logged in',token:token});
 }
