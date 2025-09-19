@@ -130,7 +130,7 @@ const HeroSection = () => {
               className="mb-8 flex justify-center"
             >
               <div>
-              <img src="/public/EdventurLOGO.png" 
+              <img src="/EdventurLOGO.png" 
               alt="logo" 
               className='h-10 md:h-20'/>
             </div>

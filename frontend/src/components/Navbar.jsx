@@ -47,7 +47,7 @@ const Navbar = () => {
             className="flex items-center space-x-2"
           >
             <div>
-              <img src="/public/EdventurLOGO.png" 
+              <img src="/EdventurLOGO.png" 
               alt="logo" 
               className='h-8 md:h-12'/>
             </div>
