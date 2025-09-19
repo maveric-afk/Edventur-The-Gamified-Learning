@@ -50,7 +50,7 @@ const Profile = () => {
         {/* Profile Section */}
         <div className="flex flex-col md:flex-row items-center gap-6">
           <img
-            src="/public/character1.jpg"
+            src="/character1.jpg"
             alt="Profile"
             className="w-32 h-32 rounded-full border-4 border-cyan-400 shadow-[0_0_20px_#22d3ee]"
           />

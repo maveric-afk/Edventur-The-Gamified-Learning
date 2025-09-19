@@ -368,7 +368,7 @@ export default function EnglishPage() {
     }
   },[gameState])
 
-  let music=new Audio('/public/Quiz.mp3');
+  let music=new Audio('/Quiz.mp3');
   music.loop=true;
   useEffect(()=>{
     music.play();
