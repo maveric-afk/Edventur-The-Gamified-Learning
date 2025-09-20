@@ -5,8 +5,6 @@ const {setUser,getUser}=require('../jwtAuth.js');
 
 async function handleUserSignup(req,res) {
     const body=req.body;
-    const edventurID=699669
-
     if(body.usertype=="Student"){
         await userModel.create({
         name:body.name,
@@ -17,11 +15,7 @@ async function handleUserSignup(req,res) {
     }
     
 
-    if(body.usertype=="Teacher"){
-        if(body.edventurid!=edventurID){
-            return res.json({error:'Edventur ID does not match'})
-        }
-        else{
+    else if(body.usertype=="Teacher"){       
         await userModel.create({
         name:body.name,
         email:body.email,
@@ -29,9 +23,8 @@ async function handleUserSignup(req,res) {
         role:"Teacher",
         standard:body.standard,
     })
-        }
     }
-    return res.end('Success');
+    return res.json({success:'Successfully signed up'});
 }
 
 async function handleUserSignin(req,res) {

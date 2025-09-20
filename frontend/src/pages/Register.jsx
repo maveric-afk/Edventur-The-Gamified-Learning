@@ -16,19 +16,19 @@ const Signup = () => {
     } = useForm()
 
     const navigate = useNavigate();
+    const edventurID=699669
 
     async function onSubmit(data) {
         if (data.password != data.confirmpassword) {
             return toast.error('Password does not match');
         }
+        if(data.edventurid!=edventurID){
+            return toast.error('Wrong Edventur ID');
+        }
         api.post('/api/signup', data)
             .then((res) => {
-                if(res.data.error){
-                    toast.error(res.data.error)
-                }
-                else
-                {toast.success('Succesfully signed up');
-                navigate('/login')}
+                    toast.success(res.data.success);
+                    navigate('/login')
             })
             .catch((err) => {
                 toast.error('Error')
