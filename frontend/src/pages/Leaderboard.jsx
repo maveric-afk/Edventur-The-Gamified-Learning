@@ -12,7 +12,12 @@ export default function LeaderBoard() {
         api.get('/api/students')
         .then((res)=>{
             if(res.data.students){
-                setStudents(res.data.students);
+                let array=res.data.students;
+                array.sort((a,b)=>{
+                    return (b.badges.length-a.badges.length)
+                  }
+                )
+                setStudents(array);
             }
         })
         .catch((err)=>{
