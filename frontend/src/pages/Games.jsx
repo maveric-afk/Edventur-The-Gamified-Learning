@@ -69,7 +69,7 @@ const Games = () => {
     <div className="min-h-screen bg-black relative overflow-hidden">
 
       {(badge && !displayed)
-      ? <BadgeUnlock badgeImage={`/public/${badge}.jpg`} badgeTitle={badge} isVisible={true} />
+      ? <BadgeUnlock badgeImage={`/${badge}.jpg`} badgeTitle={badge} isVisible={true} />
       : <div></div>}
       <ParticleBackground />
       

@@ -82,7 +82,7 @@ const Profile = () => {
             {(user.badges || []).map((badge,index)=>(
               <div key={index}>
               <p className='text-white text-[0.6rem] sm:text-[0.8rem]'>{badge}</p>
-              <img className='h-12 w-12 sm:h-20 sm:w-20 border-2' src={`/public/${badge}.jpg`} alt="badge" />
+              <img className='h-12 w-12 sm:h-20 sm:w-20 border-2' src={`/${badge}.jpg`} alt="badge" />
             </div>
             ))}
           </div>

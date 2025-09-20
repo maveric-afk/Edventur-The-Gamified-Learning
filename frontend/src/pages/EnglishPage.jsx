@@ -294,7 +294,7 @@ const TrophyIcon = ({ className = "" }) => (
   </svg>
 )
 
-const puzzleImageData = '/public/character3.jpg'
+const puzzleImageData = '/character3.jpg'
 
 export default function EnglishPage() {
 

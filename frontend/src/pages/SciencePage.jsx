@@ -295,7 +295,7 @@ const TrophyIcon = ({ className = "" }) => (
 )
 
 
-const puzzleImageData = '/public/character2.jpg'
+const puzzleImageData = '/character2.jpg'
 
 export default function SciencePage() {
 
