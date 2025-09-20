@@ -21,6 +21,7 @@ async function handleUserSignup(req,res) {
         if(body.edventurid!=edventurID){
             return res.json({error:'Edventur ID does not match'})
         }
+        else{
         await userModel.create({
         name:body.name,
         email:body.email,
@@ -28,6 +29,7 @@ async function handleUserSignup(req,res) {
         role:"Teacher",
         standard:body.standard,
     })
+        }
     }
     return res.end('Success');
 }
