@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import GameCard from "../components/GameCard";
 import ParticleBackground from "../components/ParticleBackground";
-import MarioGame from '/public/MarioGame.jpeg'
-import RacingGame from '/public/RacingGame.jpeg'
 import {NavLink,useNavigate} from 'react-router-dom'
 import {toast} from 'react-hot-toast'
 import axios from 'axios'
@@ -16,14 +14,14 @@ const games = [
     title: "Neon Jumpverse",
     description:
       "Leap into a dazzling neon dimension where glowing platforms float in the cyber skies. Collect energy orbs, dodge traps, and outsmart quirky enemies in this futuristic twist on the classic platformer adventure. Every jump brings you closer to uncovering the secrets of the Jumpverse.",
-    thumbnail: MarioGame,
+    thumbnail: '/MarioGame.jpeg',
     path:'/games/cyberracing'
   },
   {
     title: "Cyber Racing",
     description:
       "Burn neon highways at breakneck speed in a city that never sleeps. Race against rival cyber-drivers, master insane drifts, and upgrade your ride with futuristic tech. The streets are alive with light and danger—only the fastest survive in Cyber Drift X.",
-    thumbnail: RacingGame,
+    thumbnail: '/RacingGame.jpeg',
     path:'/games/cyberracing'
   },
 ];
