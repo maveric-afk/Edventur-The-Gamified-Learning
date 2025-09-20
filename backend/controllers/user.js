@@ -13,7 +13,6 @@ async function handleUserSignup(req,res) {
         standard:body.standard,
         })
     }
-    
 
     else if(body.usertype=="Teacher"){       
         await userModel.create({

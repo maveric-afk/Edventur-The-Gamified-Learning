@@ -19,6 +19,7 @@ const Signup = () => {
     const edventurID=699669
 
     async function onSubmit(data) {
+        console.log(data)
         if (data.password != data.confirmpassword) {
             return toast.error('Password does not match');
         }
