@@ -19,11 +19,11 @@ const Signup = () => {
     const edventurID=699669
 
     async function onSubmit(data) {
-        console.log(data)
         if (data.password != data.confirmpassword) {
             return toast.error('Password does not match');
         }
-        if(data.edventurid!=edventurID){
+        data.usertype=usertype;
+        if(data.edventurid && data.edventurid!=edventurID){
             return toast.error('Wrong Edventur ID');
         }
         api.post('/api/signup', data)
