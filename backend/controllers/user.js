@@ -46,7 +46,12 @@ async function handleGetUser(req,res) {
 }
 
 async function handleLogout(req,res) {
-    res.cookie('token','');
+    res.cookie('token','',{
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    expires: new Date(0)
+  });
     return res.json({message:'User logged out'});
 }
 
