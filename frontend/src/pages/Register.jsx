@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
-import { Link, NavLink,useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion'
-import {toast} from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import api from '../api/axios'
 
 const Signup = () => {
+    const [usertype, setUserType] = useState('');
     const {
         register,
         handleSubmit,
@@ -14,22 +15,26 @@ const Signup = () => {
         formState: { errors, isSubmitting },
     } = useForm()
 
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     async function onSubmit(data) {
-        if(data.password!=data.confirmpassword){
+        if (data.password != data.confirmpassword) {
             return toast.error('Password does not match');
         }
-    api.post('/api/signup',data)
-    .then((res)=>{
-        toast.success('Succesfully signed up');
-        navigate('/login')
-    })
-    .catch((err)=>{
-        toast.error('Error')
-    })
+        api.post('/api/signup', data)
+            .then((res) => {
+                if(res.data.error){
+                    toast.error(res.data.error)
+                }
+                else
+                {toast.success('Succesfully signed up');
+                navigate('/login')}
+            })
+            .catch((err) => {
+                toast.error('Error')
+            })
 
-    reset();
+        reset();
     }
 
     return (
@@ -83,7 +88,7 @@ const Signup = () => {
                                             required: true,
                                         })} />
                             </div>
-                            
+
 
                             <div>
                                 <input
@@ -105,7 +110,51 @@ const Signup = () => {
                                         })} />
                             </div>
 
-                            <div>
+                            <div className="space-y-2 flex">
+                                <div className="text-white">
+                                    <label>Student:</label>
+                                    <input
+                                        {...register("usertype",{
+                                            required:true,
+                                        })}
+                                        type="radio"
+                                        onClick={() => {
+                                            setUserType('Student')
+                                        }}
+                                        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white placeholder-gray-400 
+                focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-300 shadow-lg focus:shadow-pink-500/25"
+                                    />
+                                </div>
+
+                                <div className="text-white">
+                                    <label>Teacher:</label>
+                                    <input
+                                        {...register("usertype",{
+                                            required:true,
+                                        })}
+                                        type="radio"
+                                        onClick={() => {
+                                            setUserType("Teacher")
+                                        }}
+                                        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white placeholder-gray-400 
+                focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-300 shadow-lg focus:shadow-pink-500/25"
+                                    />
+                                </div>
+                            </div>
+
+                            {usertype=="Teacher"
+                            ? <div>
+                                <input
+                                    placeholder='Edventur ID'
+                                    className={errors.edventurid ? "border-red-500 border-4" : "w-full p-3 rounded-lg bg-gray-800 border border-gray-700 text-gray-200 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500 outline-none transition-all"}
+                                    {...register("edventurid",
+                                        {
+                                            required: true,
+                                        })} />
+                            </div>
+                        :<div></div>}
+
+                           <div>
                                 <input
                                     placeholder='Class'
                                     className={errors.standard ? "border-red-500 border-4" : "w-full p-3 rounded-lg bg-gray-800 border border-gray-700 text-gray-200 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500 outline-none transition-all"}
